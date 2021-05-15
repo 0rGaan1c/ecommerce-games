@@ -11,8 +11,8 @@ const BuyGame = ({
   return (
     <>
       <Navbar />
-      <div className="my-6 w-5/6 mx-auto">
-        <div className="w-full my-6">
+      <div className="my-8 w-5/6 mx-auto xl:flex xl:items-center">
+        <div className="w-full my-6 xl:mr-8">
           <img className="w-full" src={img} alt={name} />
         </div>
         <div>

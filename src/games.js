@@ -34,4 +34,11 @@ export const games = [
     price: 20.99,
     img: "https://images7.alphacoders.com/319/thumbbig-319944.jpg",
   },
+  {
+    name: "Bloodborne",
+    description:
+      "Bloodborne is an action role-playing game developed by FromSoftware and published by Sony Computer Entertainment, which released for the PlayStation 4 in March 2015.",
+    price: 30.99,
+    img: "https://images5.alphacoders.com/516/thumbbig-516663.jpg",
+  },
 ];
