@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 const GameList = () => {
   return (
     <>
-      <div className="my-6 w-5/6 mx-auto md:flex md:items-center md:justify-between">
+      <div className="my-6 w-5/6 xl:w-11/12 mx-auto xl:flex xl:flex-wrap justify-between">
         {games.map((game, idx) => {
           const { name, price, img } = game;
 
           return (
-            <div className="w-full my-4 border-2 border-blue-400" key={idx}>
+            <div
+              className="w-full my-4 border-2 border-blue-400 xl:border-0 xl:px-2 xl:w-4/12"
+              key={idx}
+            >
               <img className="w-full" src={img} alt={name} />
               <div className="flex p-2 bg-black justify-between">
                 <div className="text-lg text-white font-bold">
