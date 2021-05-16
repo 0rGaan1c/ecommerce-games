@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../CartContext";
 
 const Navbar = () => {
+  const {
+    cart: { totalItems },
+  } = useCart();
   return (
     <>
       <nav className="bg-black">
@@ -12,7 +16,9 @@ const Navbar = () => {
             <Link to="/cart">
               <FaShoppingCart className="transition duration-200 ease-in-out transform hover:scale-110" />
             </Link>
-            <div className="text-sm text-white relative bottom-2 ml-1">{0}</div>
+            <div className="text-sm text-white relative bottom-2 ml-1">
+              {totalItems}
+            </div>
           </div>
         </div>
       </nav>

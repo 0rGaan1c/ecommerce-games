@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { games } from "../games";
 import { useCart } from "../CartContext";
 
 const BuyGame = ({
   match: {
-    params: { name, idx },
+    params: { name, id, idx },
   },
 }) => {
-  const { description, img, price } = games[idx];
+  const { cart, dispatch } = useCart();
+  const [toggle, setToggle] = useState(false);
 
-  const { increase } = useCart();
+  useEffect(() => {
+    const tmpId = parseInt(id);
+    if (cart.cartItems.length) {
+      cart.cartItems.map((item) => {
+        if (tmpId === item.id) {
+          setToggle(true);
+        }
+        return null;
+      });
+    }
+  });
+
+  const { img, price, description } = games[idx];
+
+  const handleClickAdd = () => {
+    dispatch({
+      type: "add-to-cart",
+      payload: { idx },
+    });
+    setToggle(true);
+  };
+
+  const handleClickRemove = () => {
+    dispatch({ type: "remove-from-cart", payload: { id } });
+    setToggle(!toggle);
+  };
 
   return (
     <>
@@ -23,12 +49,21 @@ const BuyGame = ({
           <div className="text-xl font-bold">{name}</div>
           <div className="font-bold">${price}</div>
           <div className="my-2">{description}</div>
-          <div
-            className="bg-black text-white p-2 w-2/4 text-lg text-center cursor-pointer hover:text-black hover:bg-white border-2 border-black"
-            onClick={increase}
-          >
-            Add to Cart
-          </div>
+          {!toggle ? (
+            <div
+              className="bg-black text-white p-2 w-2/4 text-lg text-center cursor-pointer hover:text-black hover:bg-white border-2 border-black"
+              onClick={() => handleClickAdd()}
+            >
+              Add to Cart
+            </div>
+          ) : (
+            <div
+              className="bg-black text-white p-2 w-2/4 text-lg text-center cursor-pointer hover:text-black hover:bg-white border-2 border-black"
+              onClick={() => handleClickRemove()}
+            >
+              Remove
+            </div>
+          )}
         </div>
       </div>
     </>

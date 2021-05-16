@@ -1,9 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { games } from "../games";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
+import { useCart } from "../CartContext";
 
 const Cart = () => {
+  const { cart } = useCart();
+  console.log(cart);
+
   return (
     <>
       <Navbar />
@@ -12,21 +15,29 @@ const Cart = () => {
           <h2 className="text-xl font-bold">Products</h2>
           <hr className="border-black" />
         </div>
-        <div className="flex">
-          <img src={games[0].img} alt={games[0].name} className="w-5/12" />
-          <div className="ml-4 font-bold">
-            <span className="text-lg">{games[0].name} </span>
-            <div className="text-gray-500">${games[0].price}</div>
-            <div className="flex items-center text-lg">
-              <FaPlusSquare className="cursor-pointer" />
-              <span className="mx-2"> {5} </span>
-              <FaMinusSquare className="cursor-pointer" />
-              <span className="text-sm ml-12 font-thin hover:underline cursor-pointer">
-                Remove
-              </span>
-            </div>
-          </div>
-        </div>
+        {cart.cartItems.map((cartItem, idx) => {
+          const { name, img, price, count } = cartItem;
+          if (count >= 1) {
+            return (
+              <div className="flex mt-4" key={idx}>
+                <img src={img} alt={name} className="w-5/12" />
+                <div className="ml-4 font-bold">
+                  <span className="text-lg leading-none">{name}</span>
+                  <div className="text-gray-500">${price}</div>
+                  <div className="flex items-center text-lg">
+                    <FaPlusSquare className="cursor-pointer" />
+                    <span className="mx-2"> {1} </span>
+                    <FaMinusSquare className="cursor-pointer" />
+                    <span className="text-sm ml-12 font-thin hover:underline cursor-pointer">
+                      Remove
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })}
       </div>
     </>
   );
