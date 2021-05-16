@@ -9,8 +9,10 @@ const Navbar = () => {
         <div className="flex justify-between items-center text-white text-2xl p-3 font-bold tracking-wide cursor-pointer md:text-3xl md:py-5 md:w-11/12 md:mx-auto">
           <Link to="/">Cloud</Link>
           <div className="flex">
-            <FaShoppingCart className="transition duration-200 ease-in-out transform hover:scale-110" />
-            <div className="text-sm relative bottom-2 ml-1">0</div>
+            <Link to="/cart">
+              <FaShoppingCart className="transition duration-200 ease-in-out transform hover:scale-110" />
+            </Link>
+            <div className="text-sm text-white relative bottom-2 ml-1">{0}</div>
           </div>
         </div>
       </nav>
