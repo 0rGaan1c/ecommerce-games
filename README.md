@@ -1,14 +1,13 @@
-# ECommerce Website for Buying Games
+# Shopping Cart
 
-Building a very simple eCommerce Website, currently I am focusing on builiding the shopping cart.
+Building a very simple Shopping Cart.
 
-* [Live Site](https://ecommerce-games-five.vercel.app/)
-* Images are from [AlphaCoders](https://wall.alphacoders.com/)
+- [Live Site](https://ecommerce-games-five.vercel.app/)
+- Images are from [AlphaCoders](https://wall.alphacoders.com/)
 
 ![alt text](./screenshot1.png)
 ![alt text](./screenshot2.png)
 
-
 ## How to run?
-### `npm install && npm start`
 
+### `npm install && npm start`
