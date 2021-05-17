@@ -1,7 +1,16 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 import { games } from "./games";
 
 export const CartContext = React.createContext();
+
+const getLocalStorage = () => {
+  let list = localStorage.getItem("list");
+  if (list) {
+    return (list = JSON.parse(localStorage.getItem("list")));
+  } else {
+    return [];
+  }
+};
 
 export const useCart = () => {
   return useContext(CartContext);
@@ -62,8 +71,12 @@ function reducer(state, action) {
 
 export const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(reducer, {
-    cartItems: [],
+    cartItems: getLocalStorage(),
   });
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(cart.cartItems));
+  }, [cart]);
 
   const value = {
     cart,
