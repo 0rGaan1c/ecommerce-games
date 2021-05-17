@@ -14,17 +14,46 @@ function reducer(state, action) {
       const data = games[idx];
 
       const setData = [...state.cartItems, { ...data, count: 1 }];
-      return { ...state, totalItems: setData.length, cartItems: setData };
+      return { ...state, cartItems: setData };
 
     case "remove-from-cart":
-      const id = parseInt(action.payload.id);
       const removeData = state.cartItems.filter((item) => {
-        if (!(item.id === id)) {
+        if (!(item.id === action.payload.id)) {
           return item;
         }
         return null;
       });
-      return { ...state, totalItems: removeData.length, cartItems: removeData };
+      return { ...state, cartItems: removeData };
+
+    case "increase":
+      const increaseData = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...item, count: item.count + 1 };
+        }
+        return item;
+      });
+
+      return { ...state, cartItems: increaseData };
+
+    case "decrease":
+      let decreaseData = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          if (item.count - 1 === 0) {
+            return null;
+          }
+          return { ...item, count: item.count - 1 };
+        }
+        return item;
+      });
+
+      decreaseData = decreaseData.filter((item) => {
+        if (item !== null) {
+          return item;
+        }
+        return null;
+      });
+
+      return { ...state, cartItems: decreaseData };
 
     default:
       return;
@@ -34,8 +63,6 @@ function reducer(state, action) {
 export const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(reducer, {
     cartItems: [],
-    totalPrice: 0,
-    totalItems: 0,
   });
 
   const value = {

@@ -5,25 +5,24 @@ import { useCart } from "../CartContext";
 
 const BuyGame = ({
   match: {
-    params: { name, id, idx },
+    params: { name, idx },
   },
 }) => {
   const { cart, dispatch } = useCart();
   const [toggle, setToggle] = useState(false);
 
+  const { id, img, price, description } = games[idx];
+
   useEffect(() => {
-    const tmpId = parseInt(id);
     if (cart.cartItems.length) {
       cart.cartItems.map((item) => {
-        if (tmpId === item.id) {
+        if (id === item.id) {
           setToggle(true);
         }
         return null;
       });
     }
   });
-
-  const { img, price, description } = games[idx];
 
   const handleClickAdd = () => {
     dispatch({

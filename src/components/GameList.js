@@ -19,7 +19,7 @@ const GameList = () => {
                   {name.substr(0, 15)}...
                 </div>
                 <div className="bg-white px-4 cursor-pointer transition duration-500 ease-in-out transform  hover:scale-110">
-                  <Link to={`/${name}/${idx}/${id}`}> ${price} </Link>
+                  <Link to={`/${name}/${idx}`}> ${price} </Link>
                 </div>
               </div>
             </div>

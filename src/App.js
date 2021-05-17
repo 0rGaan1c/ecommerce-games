@@ -12,7 +12,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Index} />
             <Route path="/cart" component={Cart} />
-            <Route exacth path="/:name/:idx/:id" component={BuyGame} />
+            <Route exacth path="/:name/:idx/" component={BuyGame} />
           </Switch>
         </Router>
       </CartProvider>
