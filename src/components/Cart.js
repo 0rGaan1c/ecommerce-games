@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import { useCart } from "../CartContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart, dispatch } = useCart();
@@ -42,11 +43,15 @@ const Cart = () => {
           if (count >= 1) {
             return (
               <div className="flex mt-4" key={id}>
-                <img src={img} alt={name} className="w-5/12" />
-                <div className="ml-4 font-bold">
-                  <span className="text-lg leading-none">{name}</span>
-                  <div className="text-gray-500">${price}</div>
-                  <div className="flex items-center text-lg">
+                <img src={img} alt={name} className="w-5/12 lg:w-3/12" />
+                <div className="ml-4 font-bold  lg:ml-64 lg:mt-10">
+                  <Link to={`/${name}/${id}`}>
+                    <span className="text-lg leading-none lg:text-2xl hover:text-white hover:bg-black">
+                      {name}
+                    </span>
+                  </Link>
+                  <div className="text-gray-500 lg:text-lg">${price}</div>
+                  <div className="flex items-center text-lg lg:text-2xl">
                     <FaPlusSquare
                       className="cursor-pointer"
                       onClick={() => handleClickIncrease(id)}
@@ -57,7 +62,7 @@ const Cart = () => {
                       onClick={() => handleClickDecrease(id)}
                     />
                     <span
-                      className="text-sm ml-12 font-thin hover:underline cursor-pointer"
+                      className="text-sm ml-12 font-thin hover:underline cursor-pointer lg:text-lg"
                       onClick={() => handleClickRemove(id)}
                     >
                       Remove
