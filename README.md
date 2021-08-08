@@ -1,6 +1,5 @@
 # Shopping Cart
-
-Building a very simple Shopping Cart.
+A very simple shopping cart build with useReducer() and useContext() hook.
 
 - [Live Site](https://shoppingcart-games-five.vercel.app/)
 - Images are from [AlphaCoders](https://wall.alphacoders.com/)
