@@ -23,7 +23,7 @@ export const games = [
     description:
       "The Witcher 3: Wild Hunt is an action role-playing game developed and published by Polish developer CD Projekt Red and is based on The Witcher series of fantasy novels written by Andrzej Sapkowski.",
     price: 9.99,
-    img: "https://images2.alphacoders.com/600/thumbbig-600255.jpg",
+    img: "https://images5.alphacoders.com/124/thumbbig-1244644.webp",
     count: 0,
   },
   {
